@@ -1,3 +1,2 @@
 # fiado
-Practial proyect
-npm install
+Tecnical project evaluation
