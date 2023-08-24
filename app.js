@@ -26,14 +26,14 @@ function jwtVerify(req,res,next){
             // Access Denied
             return res.status(401).send({
                 error:error,
-                message:'Access Denied'
+                message:'Access Denied 1'
             });
         }
     } catch (error) {
         // Access Denied
         return res.status(401).send({
             error:error,
-            message:'Access Denied'
+            message:'Access Denied 2'
         });
     }
 

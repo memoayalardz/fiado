@@ -119,4 +119,49 @@ clientsController.getClientDataAccount = (req,res)=>{
     }
 }
 
+clientsController.getAllClients = (req,res)=>{
+    
+  function getData(){
+    const dataClients = new Promise((resolve,reject) => {
+        const rows = 0;
+        Client.find({})
+        .count(
+            {},(err,count) =>{
+                if(count > 0){
+                    Client.find({})
+                    .then(clients => {
+                        resolve({
+                                success:true,
+                                rows:count, 
+                                data:  clients
+                                 
+                            })
+                    });
+                }else{
+                    reject({
+                        success:false,
+                        message:'Records are not found'
+                    });
+                }
+            }
+        );
+         
+    });
+    return dataClients;
+  }
+
+    getData()
+    .then(async (data)=>{
+        if(await data.success){
+            res.send({
+                data
+            });
+            return;
+        }
+    })
+        
+        
+    }
+
+
 module.exports = clientsController;
